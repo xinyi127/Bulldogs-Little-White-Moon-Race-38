@@ -1,0 +1,37 @@
+#include<map>
+#include<math.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<algorithm>
+#define scnaf scanf
+#define ll long long
+using namespace std;
+const int N=1e5+5;
+char s[N];
+int main()
+{
+    int i,j,k,n,t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int ans=0;
+        scanf("%d%d\n%s",&n,&k,s);
+        for(i=0;i<2;i++)
+            if(s[i]=='W')
+                ans++;
+            else ans--;
+        for(i=2;i<n;i++)
+        {
+            if(s[i]=='W')
+            {
+                if(s[i-1]==s[i-2]&&s[i-1]=='W')
+                    ans+=k;
+                else ans++;
+            }
+            else ans--;
+        }
+        printf("%d\n",ans);
+    }
+    return 0;
+}
